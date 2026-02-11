@@ -3,14 +3,16 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence, useScroll, useSpring } from 'framer-motion';
 import { Menu, X, ArrowRight, Instagram, Linkedin, Globe } from 'lucide-react';
 import Navbar from './components/Navbar';
-import Hero from './components/Hero';
+import HalideTopHero from './components/ui/halide-topo-hero';
 import HorizontalGallery from './components/HorizontalGallery';
 import Values from './components/Values';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import InfiniteGallery from './components/InfiniteGallery';
 
 const App: React.FC = () => {
   const { scrollYProgress } = useScroll();
+  const [isGalleryOpen, setIsGalleryOpen] = useState(false);
   const scaleX = useSpring(scrollYProgress, {
     stiffness: 100,
     damping: 30,
@@ -19,6 +21,20 @@ const App: React.FC = () => {
 
   return (
     <div className="relative min-h-screen selection:bg-cta selection:text-white">
+      {/* 3D Gallery Overlay */}
+      <AnimatePresence>
+        {isGalleryOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[200]"
+          >
+            <InfiniteGallery onClose={() => setIsGalleryOpen(false)} />
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       {/* Progress Bar */}
       <motion.div
         className="fixed top-0 left-0 right-0 h-1 bg-cta z-[100] origin-left"
@@ -26,10 +42,11 @@ const App: React.FC = () => {
       />
 
       <Navbar />
-      
+
+
       <main>
-        <Hero />
-        
+        <HalideTopHero onOpenGallery={() => setIsGalleryOpen(true)} />
+
         <section id="work" className="py-24 bg-background">
           <div className="container mx-auto px-6 mb-12">
             <span className="accent-text text-2xl text-accent block mb-4">Case Studies</span>

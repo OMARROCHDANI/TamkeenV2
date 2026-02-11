@@ -12,7 +12,7 @@ const Navbar: React.FC = () => {
       setScrolled(window.scrollY > 20);
     };
     window.addEventListener('scroll', handleScroll);
-    
+
     // Lock scroll when menu is open
     if (isOpen) {
       document.body.style.overflow = 'hidden';
@@ -35,9 +35,9 @@ const Navbar: React.FC = () => {
 
   return (
     <>
-      <nav className={`fixed top-0 left-0 w-full z-[100] transition-all duration-700 ${scrolled ? 'bg-background/95 backdrop-blur-md shadow-sm py-4' : 'bg-transparent py-10'}`}>
+      <nav className={`fixed top-0 left-0 w-full z-[100] transition-all duration-700 ${scrolled ? 'bg-background/95 backdrop-blur-md shadow-sm py-4 text-primary' : 'bg-transparent py-10 text-background'}`}>
         <div className="container mx-auto px-6 lg:px-12 flex justify-between items-center">
-          <a href="#" className="heading-luxury text-3xl md:text-4xl font-bold tracking-tighter text-primary z-[110]">
+          <a href="#" className={`heading-luxury text-3xl md:text-4xl font-bold tracking-tighter z-[110] ${scrolled ? 'text-primary' : 'text-background'}`}>
             tamkeen<span className="text-cta">.</span>
           </a>
 
@@ -47,14 +47,14 @@ const Navbar: React.FC = () => {
               <a
                 key={item.name}
                 href={item.href}
-                className="text-[10px] uppercase tracking-[0.4em] font-medium text-bodyText hover:text-cta transition-colors"
+                className={`text-[10px] uppercase tracking-[0.4em] font-medium hover:text-cta transition-colors ${scrolled ? 'text-bodyText' : 'text-background'}`}
               >
                 {item.name}
               </a>
             ))}
             <a
               href="#contact"
-              className="ml-4 px-8 py-4 bg-primary text-background text-[10px] uppercase tracking-[0.2em] font-bold hover:bg-cta transition-all transform hover:-translate-y-1 rounded-sm shadow-xl shadow-primary/5"
+              className={`ml-4 px-8 py-4 text-[10px] uppercase tracking-[0.2em] font-bold hover:bg-cta transition-all duration-300 transform hover:-translate-y-1 rounded-sm shadow-xl shadow-primary/5 cursor-pointer ${scrolled ? 'bg-primary text-background' : 'bg-background text-primary'}`}
             >
               Start Project
             </a>
@@ -63,7 +63,7 @@ const Navbar: React.FC = () => {
           {/* Mobile Toggle */}
           <button
             onClick={() => setIsOpen(true)}
-            className="lg:hidden text-primary hover:text-cta transition-colors p-2 z-[110]"
+            className={`lg:hidden hover:text-cta transition-colors p-2 z-[110] cursor-pointer ${scrolled ? 'text-primary' : 'text-background'}`}
             aria-label="Open Menu"
           >
             <Menu className="w-8 h-8" />
@@ -93,7 +93,7 @@ const Navbar: React.FC = () => {
               </span>
               <button
                 onClick={() => setIsOpen(false)}
-                className="text-background hover:text-cta transition-colors p-2"
+                className="text-background hover:text-cta transition-colors p-2 cursor-pointer"
                 aria-label="Close Menu"
               >
                 <X className="w-10 h-10" />
@@ -128,7 +128,7 @@ const Navbar: React.FC = () => {
                 <a
                   href="#contact"
                   onClick={() => setIsOpen(false)}
-                  className="w-full py-6 bg-cta text-primary text-center uppercase tracking-[0.3em] text-xs font-bold hover:bg-background transition-all duration-500 block rounded-sm shadow-2xl"
+                  className="w-full py-6 bg-cta text-primary text-center uppercase tracking-[0.3em] text-xs font-bold hover:bg-background transition-all duration-300 block rounded-sm shadow-2xl cursor-pointer"
                 >
                   Start Project
                 </a>

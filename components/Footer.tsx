@@ -13,19 +13,19 @@ const Footer: React.FC = () => {
               An ethical design boutique crafting digital legacies. Aligned with values, driven by excellence.
             </p>
           </div>
-          
+
           <div className="flex gap-8">
-            <a href="#" className="hover:text-cta transition-colors"><Instagram className="w-6 h-6" /></a>
-            <a href="#" className="hover:text-cta transition-colors"><Linkedin className="w-6 h-6" /></a>
-            <a href="#" className="hover:text-cta transition-colors"><Globe className="w-6 h-6" /></a>
-            <a href="mailto:hello@tamkeen.design" className="hover:text-cta transition-colors"><Mail className="w-6 h-6" /></a>
+            <a href="#" className="hover:text-cta transition-colors duration-300"><Instagram className="w-6 h-6" /></a>
+            <a href="#" className="hover:text-cta transition-colors duration-300"><Linkedin className="w-6 h-6" /></a>
+            <a href="#" className="hover:text-cta transition-colors duration-300"><Globe className="w-6 h-6" /></a>
+            <a href="mailto:hello@tamkeen.design" className="hover:text-cta transition-colors duration-300"><Mail className="w-6 h-6" /></a>
           </div>
         </div>
 
         <div className="flex flex-col md:flex-row justify-between items-center text-accent text-xs uppercase tracking-widest gap-8">
           <div className="flex gap-12">
-            <a href="#" className="hover:text-background transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-background transition-colors">Ethical Guidelines</a>
+            <a href="#" className="hover:text-background transition-colors duration-300">Privacy Policy</a>
+            <a href="#" className="hover:text-background transition-colors duration-300">Ethical Guidelines</a>
           </div>
           <p>© {new Date().getFullYear()} Tamkeen Design Agency. Built with Ihsan.</p>
         </div>

@@ -39,7 +39,7 @@ const HorizontalGallery: React.FC = () => {
                 <div className="absolute inset-0 bg-primary/5 transition-opacity group-hover:opacity-0" />
                 <div className="absolute inset-0 border border-black/5 pointer-events-none" />
               </div>
-              
+
               {/* Content Area */}
               <div className="pt-10 pb-12 flex flex-col">
                 <div className="flex justify-between items-start gap-8">
@@ -51,11 +51,11 @@ const HorizontalGallery: React.FC = () => {
                       {study.title}
                     </h3>
                   </div>
-                  <button className="flex-shrink-0 w-14 h-14 md:w-20 md:h-20 rounded-full border border-primary/10 flex items-center justify-center group-hover:bg-primary group-hover:text-background transition-all duration-700 ease-out mt-1">
+                  <button className="flex-shrink-0 w-14 h-14 md:w-20 md:h-20 rounded-full border border-primary/10 flex items-center justify-center group-hover:bg-primary group-hover:text-background transition-all duration-300 ease-out mt-1 cursor-pointer">
                     <ArrowRight className="w-6 h-6 md:w-8 md:h-8" />
                   </button>
                 </div>
-                
+
                 <p className="max-w-lg text-accent font-light text-base md:text-lg leading-relaxed opacity-0 group-hover:opacity-100 transition-all duration-1000 delay-200 transform translate-y-4 group-hover:translate-y-0">
                   {study.description}
                 </p>
