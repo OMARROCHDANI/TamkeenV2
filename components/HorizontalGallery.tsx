@@ -30,8 +30,8 @@ const HorizontalGallery: React.FC = () => {
       scrollTrigger: {
         trigger: containerRef.current,
         pin: true,
-        start: "top top",
-        end: () => `+=${sliderRef.current!.scrollWidth - window.innerWidth}`,
+        start: "center center",
+        end: () => `+=${sliderRef.current!.scrollWidth}`,
         scrub: 1,
         invalidateOnRefresh: true,
       }
