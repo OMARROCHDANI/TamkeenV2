@@ -1,60 +1,60 @@
 import React, { useEffect, useRef } from 'react';
 
 interface HalideTopHeroProps {
-  onOpenGallery?: () => void;
+    onOpenGallery?: () => void;
 }
 
 const HalideTopHero: React.FC<HalideTopHeroProps> = ({ onOpenGallery }) => {
-  const canvasRef = useRef<HTMLDivElement>(null);
-  const layersRef = useRef<(HTMLDivElement | null)[]>([]);
+    const canvasRef = useRef<HTMLDivElement>(null);
+    const layersRef = useRef<(HTMLDivElement | null)[]>([]);
 
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
+    useEffect(() => {
+        const canvas = canvasRef.current;
+        if (!canvas) return;
 
-    // Mouse Parallax Logic
-    const handleMouseMove = (e: MouseEvent) => {
-      const x = (window.innerWidth / 2 - e.pageX) / 25;
-      const y = (window.innerHeight / 2 - e.pageY) / 25;
+        // Mouse Parallax Logic
+        const handleMouseMove = (e: MouseEvent) => {
+            const x = (window.innerWidth / 2 - e.pageX) / 25;
+            const y = (window.innerHeight / 2 - e.pageY) / 25;
 
-      // Rotate the 3D Canvas
-      canvas.style.transform = `rotateX(${55 + y / 2}deg) rotateZ(${-25 + x / 2}deg)`;
+            // Rotate the 3D Canvas
+            canvas.style.transform = `rotateX(${55 + y / 2}deg) rotateZ(${-25 + x / 2}deg)`;
 
-      // Apply depth shift to layers
-      layersRef.current.forEach((layer, index) => {
-        if (!layer) return;
-        const depth = (index + 1) * 15;
-        const moveX = x * (index + 1) * 0.2;
-        const moveY = y * (index + 1) * 0.2;
-        layer.style.transform = `translateZ(${depth}px) translate(${moveX}px, ${moveY}px)`;
-      });
-    };
+            // Apply depth shift to layers
+            layersRef.current.forEach((layer, index) => {
+                if (!layer) return;
+                const depth = (index + 1) * 15;
+                const moveX = x * (index + 1) * 0.2;
+                const moveY = y * (index + 1) * 0.2;
+                layer.style.transform = `translateZ(${depth}px) translate(${moveX}px, ${moveY}px)`;
+            });
+        };
 
-    // Entrance Animation
-    canvas.style.opacity = '0';
-    canvas.style.transform = 'rotateX(90deg) rotateZ(0deg) scale(0.8)';
+        // Entrance Animation
+        canvas.style.opacity = '0';
+        canvas.style.transform = 'rotateX(90deg) rotateZ(0deg) scale(0.8)';
 
-    const timeout = setTimeout(() => {
-      /* canvas.style.transition = 'all 2.5s cubic-bezier(0.16, 1, 0.3, 1)'; */
-      // React 18 / strict mode safety: check properly
-      if (canvas) {
-        canvas.style.transition = 'all 2.5s cubic-bezier(0.16, 1, 0.3, 1)';
-        canvas.style.opacity = '1';
-        canvas.style.transform = 'rotateX(55deg) rotateZ(-25deg) scale(1)';
-      }
-    }, 300);
+        const timeout = setTimeout(() => {
+            /* canvas.style.transition = 'all 2.5s cubic-bezier(0.16, 1, 0.3, 1)'; */
+            // React 18 / strict mode safety: check properly
+            if (canvas) {
+                canvas.style.transition = 'all 2.5s cubic-bezier(0.16, 1, 0.3, 1)';
+                canvas.style.opacity = '1';
+                canvas.style.transform = 'rotateX(55deg) rotateZ(-25deg) scale(1)';
+            }
+        }, 300);
 
-    window.addEventListener('mousemove', handleMouseMove);
+        window.addEventListener('mousemove', handleMouseMove);
 
-    return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-      clearTimeout(timeout);
-    };
-  }, []);
+        return () => {
+            window.removeEventListener('mousemove', handleMouseMove);
+            clearTimeout(timeout);
+        };
+    }, []);
 
-  return (
-    <>
-      <style>{`
+    return (
+        <>
+            <style>{`
         :root {
           /* Tamkeen Palette Mapping */
           --bg-halide: #1C1917; /* Primary */
@@ -187,60 +187,59 @@ const HalideTopHero: React.FC<HalideTopHeroProps> = ({ onOpenGallery }) => {
         }
       `}</style>
 
-      <div className="halide-body">
-        {/* SVG Filter for Grain */}
-        <svg style={{ position: 'absolute', width: 0, height: 0 }}>
-          <filter id="grain">
-            <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" />
-            <feColorMatrix type="saturate" values="0" />
-          </filter>
-        </svg>
+            <div className="halide-body">
+                {/* SVG Filter for Grain */}
+                <svg style={{ position: 'absolute', width: 0, height: 0 }}>
+                    <filter id="grain">
+                        <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" />
+                        <feColorMatrix type="saturate" values="0" />
+                    </filter>
+                </svg>
 
-        <div className="halide-grain" style={{ filter: 'url(#grain)' }}></div>
+                <div className="halide-grain" style={{ filter: 'url(#grain)' }}></div>
 
-        <div className="interface-grid">
-          {/* Removed duplicate navbar elements */}
+                <div className="interface-grid">
+                    {/* Removed duplicate navbar elements */}
 
-          <div style={{ gridColumn: '1 / -1', gridRow: '2', alignSelf: 'center', textAlign: 'center', zIndex: 30 }}>
-            <h1 className="hero-title" style={{ marginBottom: '1.5rem' }}>
-              IHSAAN<br />
-              <span style={{ fontFamily: 'Playfair Display', fontStyle: 'italic', fontWeight: 400, color: 'var(--accent-halide)' }}>at</span> SCALE
-            </h1>
-            <p style={{
-              fontFamily: 'Montserrat',
-              fontSize: 'clamp(0.9rem, 1.5vw, 1.1rem)',
-              fontWeight: 300,
-              maxWidth: '600px',
-              margin: '0 auto',
-              color: '#d6d3d1', // stone-300
-              lineHeight: 1.6
-            }}>
-              Crafting ethical digital experiences that honor your values without compromising on world-class aesthetics.
-            </p>
-          </div>
+                    <div style={{ gridColumn: '1 / -1', gridRow: '2', alignSelf: 'center', textAlign: 'center', zIndex: 30 }}>
+                        <h1 className="hero-title" style={{ marginBottom: '1.5rem' }}>
+                            <span style={{ fontFamily: 'Playfair Display', fontStyle: 'italic', fontWeight: 400, color: 'var(--accent-halide)' }}>Values-First</span> WEB AGENCY
+                        </h1>
+                        <p style={{
+                            fontFamily: 'Montserrat',
+                            fontSize: 'clamp(0.9rem, 1.5vw, 1.1rem)',
+                            fontWeight: 300,
+                            maxWidth: '800px',
+                            margin: '0 auto',
+                            color: '#d6d3d1', // stone-300
+                            lineHeight: 1.8
+                        }}>
+                            We build strategic digital foundations for Muslim brands that care about halal income, clarity, and long-term authority.
+                        </p>
+                    </div>
 
-          <div style={{ gridColumn: '1 / -1', gridRow: '3', display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%', gap: '1.5rem', flexWrap: 'wrap' }}>
-            <a href="#work" className="cta-button">EXPLORE WORK</a>
+                    <div style={{ gridColumn: '1 / -1', gridRow: '3', display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%', gap: '1.5rem', flexWrap: 'wrap' }}>
+                        <a href="#contact" className="cta-button">Start Your Project</a>
 
-            {onOpenGallery && (
-              <button onClick={onOpenGallery} className="cta-button secondary">
-                VIEW 3D GALLERY
-              </button>
-            )}
-          </div>
-        </div>
+                        {onOpenGallery && (
+                            <button onClick={onOpenGallery} className="cta-button secondary">
+                                View Work
+                            </button>
+                        )}
+                    </div>
+                </div>
 
-        <div className="viewport">
-          <div className="canvas-3d" ref={canvasRef}>
-            <div className="layer layer-1" ref={(el) => (layersRef.current[0] = el)}></div>
-            <div className="layer layer-2" ref={(el) => (layersRef.current[1] = el)}></div>
-            <div className="layer layer-3" ref={(el) => (layersRef.current[2] = el)}></div>
-            <div className="contours"></div>
-          </div>
-        </div>
-      </div>
-    </>
-  );
+                <div className="viewport">
+                    <div className="canvas-3d" ref={canvasRef}>
+                        <div className="layer layer-1" ref={(el) => (layersRef.current[0] = el)}></div>
+                        <div className="layer layer-2" ref={(el) => (layersRef.current[1] = el)}></div>
+                        <div className="layer layer-3" ref={(el) => (layersRef.current[2] = el)}></div>
+                        <div className="contours"></div>
+                    </div>
+                </div>
+            </div>
+        </>
+    );
 };
 
 export default HalideTopHero;

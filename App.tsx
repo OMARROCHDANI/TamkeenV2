@@ -4,8 +4,13 @@ import { motion, AnimatePresence, useScroll, useSpring } from 'framer-motion';
 import { Menu, X, ArrowRight, Instagram, Linkedin, Globe } from 'lucide-react';
 import Navbar from './components/Navbar';
 import HalideTopHero from './components/ui/halide-topo-hero';
-import HorizontalGallery from './components/HorizontalGallery';
+import FoundingStage from './components/FoundingStage';
+import WhatWeDo from './components/WhatWeDo';
+import Method from './components/Method';
 import Values from './components/Values';
+import WhoWeWorkWith from './components/WhoWeWorkWith';
+import HorizontalGallery from './components/HorizontalGallery';
+import WhyTamkeen from './components/WhyTamkeen';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import InfiniteGallery from './components/InfiniteGallery';
@@ -47,47 +52,27 @@ const App: React.FC = () => {
       <main>
         <HalideTopHero onOpenGallery={() => setIsGalleryOpen(true)} />
 
-        <section id="work" className="py-24 bg-background">
-          <div className="container mx-auto px-6 mb-12">
-            <span className="accent-text text-2xl text-accent block mb-4">Case Studies</span>
-            <h2 className="heading-luxury text-5xl md:text-7xl text-primary max-w-2xl">
-              Digital Artifacts of Purpose
+        <FoundingStage />
+
+        <WhatWeDo />
+
+        <Method />
+
+        <Values />
+
+        <WhoWeWorkWith />
+
+        <section id="work" className="py-32 bg-background border-t border-accent/10">
+          <div className="container mx-auto px-6 mb-16">
+            <span className="accent-text text-xl md:text-2xl text-accent block mb-4 italic">Select Work</span>
+            <h2 className="heading-luxury text-4xl md:text-6xl text-primary max-w-2xl mb-6">
+              Concept & prototype projects <span className="text-cta">clearly marked.</span>
             </h2>
           </div>
           <HorizontalGallery />
         </section>
 
-        <Values />
-
-        <section className="py-32 bg-primary text-background overflow-hidden relative">
-          <div className="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-            >
-              <h3 className="heading-luxury text-4xl md:text-6xl mb-8 leading-tight">
-                Crafting interfaces that honor the <span className="text-cta accent-text">human soul</span>.
-              </h3>
-              <p className="font-light text-accent text-lg md:text-xl max-w-md leading-relaxed">
-                We don't just build websites. We build digital homes that are ethical by design, beautiful by nature, and powerful by function.
-              </p>
-            </motion.div>
-            <div className="relative h-[400px] md:h-[600px]">
-              <motion.img
-                initial={{ opacity: 0, scale: 1.1 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 1.5 }}
-                src="https://picsum.photos/seed/ethic/800/1200"
-                className="w-full h-full object-cover grayscale brightness-75 rounded-sm"
-                alt="Ethical design"
-              />
-              <div className="absolute -bottom-8 -left-8 bg-cta text-primary p-8 hidden md:block">
-                <p className="font-bold text-2xl heading-luxury italic">Aligned with Value</p>
-              </div>
-            </div>
-          </div>
-        </section>
+        <WhyTamkeen />
 
         <Contact />
       </main>

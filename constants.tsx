@@ -4,55 +4,48 @@ import { ShieldCheck, Sparkles, Heart, Scale } from 'lucide-react';
 import { CaseStudy, ValueProp } from './types';
 
 export const CASE_STUDIES: CaseStudy[] = [
-  {
-    id: '1',
-    title: 'Noor Modesty',
-    category: 'E-commerce',
-    image: 'https://picsum.photos/seed/noor/1200/800',
-    description: 'A premium retail experience built on principles of dignity and Ihsan.'
-  },
-  {
-    id: '2',
-    title: 'Halal Harvest',
-    category: 'Fintech',
-    image: 'https://picsum.photos/seed/harvest/1200/800',
-    description: 'Transparent supply chain tracking for ethical consumerism.'
-  },
-  {
-    id: '3',
-    title: 'Minaret Collective',
-    category: 'Education',
-    image: 'https://picsum.photos/seed/minaret/1200/800',
-    description: 'Connecting global scholars through a sophisticated digital learning portal.'
-  },
-  {
-    id: '4',
-    title: 'The Artisanal Path',
-    category: 'Portfolio',
-    image: 'https://picsum.photos/seed/path/1200/800',
-    description: 'Showcasing traditional craftsmanship in a modern digital frame.'
-  }
+    {
+        id: '1',
+        title: 'Noor Modesty',
+        category: 'Concept',
+        image: 'https://picsum.photos/seed/noor/1200/800',
+        description: 'Premium modest e-commerce positioning.'
+    },
+    {
+        id: '2',
+        title: 'Halal Harvest',
+        category: 'Prototype',
+        image: 'https://picsum.photos/seed/harvest/1200/800',
+        description: 'Structured trust-based transparency system.'
+    },
+    {
+        id: '3',
+        title: 'Minaret Collective',
+        category: 'Concept',
+        image: 'https://picsum.photos/seed/minaret/1200/800',
+        description: 'Focused educational portal architecture.'
+    }
 ];
 
 export const VALUES: ValueProp[] = [
-  {
-    title: 'Ihsaan (Excellence)',
-    description: 'To do beautiful work as if we see the Creator. We settle for nothing less than perfection in craftsmanship.',
-    icon: <Sparkles className="w-8 h-8 text-cta" />
-  },
-  {
-    title: 'Amanah (Trust)',
-    description: 'Your vision is a trust we hold. We operate with radical transparency and absolute integrity.',
-    icon: <ShieldCheck className="w-8 h-8 text-cta" />
-  },
-  {
-    title: 'Mizan (Balance)',
-    description: 'Harmonizing high-end aesthetics with ethical boundaries. Beautiful design that respects the soul.',
-    icon: <Scale className="w-8 h-8 text-cta" />
-  },
-  {
-    title: 'Rahma (Compassion)',
-    description: 'User experiences designed with empathy, accessibility, and human-centric care.',
-    icon: <Heart className="w-8 h-8 text-cta" />
-  }
+    {
+        title: 'Ihsan — Excellence',
+        description: 'Precision in every detail.',
+        icon: <Sparkles className="w-8 h-8 text-cta" />
+    },
+    {
+        title: 'Tamkeen',
+        description: 'From Presence to Power. Your website must strengthen your position. When value-driven brands grow, the Ummah grows stronger.',
+        icon: <ShieldCheck className="w-8 h-8 text-cta" />
+    },
+    {
+        title: 'Izzah — Dignity',
+        description: 'No humiliation marketing. No desperation funnels.',
+        icon: <Scale className="w-8 h-8 text-cta" />
+    },
+    {
+        title: 'Sidq — Truthfulness',
+        description: 'Clear communication. Honest positioning. Design that clarifies — not manipulates.',
+        icon: <Heart className="w-8 h-8 text-cta" />
+    }
 ];
